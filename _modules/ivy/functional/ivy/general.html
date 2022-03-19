@@ -523,7 +523,7 @@
 <span class="sd">    :type include_infs: bool, optional</span>
 <span class="sd">    :return: Boolean as to whether the array contains nans.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">value_is_nan</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">include_infs</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">value_is_nan</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">include_infs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="exists"><a class="viewcode-back" href="../../../../functional/ivy/general/exists.html#ivy.functional.ivy.general.exists">[docs]</a><span class="k">def</span> <span class="nf">exists</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span>\
@@ -719,6 +719,46 @@
     <span class="k">return</span> <span class="n">einops</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="o">**</span><span class="n">axes_lengths</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="get_min_denominator"><a class="viewcode-back" href="../../../../functional/ivy/general/get_min_denominator.html#ivy.functional.ivy.general.get_min_denominator">[docs]</a><span class="k">def</span> <span class="nf">get_min_denominator</span><span class="p">()</span>\
+        <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the global minimum denominator used by ivy for numerically stable division.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># noinspection PyProtectedMember</span>
+    <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">_MIN_DENOMINATOR</span></div>
+
+
+<div class="viewcode-block" id="set_min_denominator"><a class="viewcode-back" href="../../../../functional/ivy/general/set_min_denominator.html#ivy.functional.ivy.general.set_min_denominator">[docs]</a><span class="k">def</span> <span class="nf">set_min_denominator</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span>\
+        <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the global minimum denominator used by ivy for numerically stable division.</span>
+
+<span class="sd">    :param val: The new value to set the minimum denominator to.</span>
+<span class="sd">    :type val: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ivy</span><span class="o">.</span><span class="n">_MIN_DENOMINATOR</span> <span class="o">=</span> <span class="n">val</span></div>
+
+
+
+
+<div class="viewcode-block" id="get_min_base"><a class="viewcode-back" href="../../../../functional/ivy/general/get_min_base.html#ivy.functional.ivy.general.get_min_base">[docs]</a><span class="k">def</span> <span class="nf">get_min_base</span><span class="p">()</span>\
+        <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the global minimum base used by ivy for numerically stable power raising.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># noinspection PyProtectedMember</span>
+    <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">_MIN_BASE</span></div>
+
+
+<div class="viewcode-block" id="set_min_base"><a class="viewcode-back" href="../../../../functional/ivy/general/set_min_base.html#ivy.functional.ivy.general.set_min_base">[docs]</a><span class="k">def</span> <span class="nf">set_min_base</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span>\
+        <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the global minimum base used by ivy for numerically stable power raising.</span>
+
+<span class="sd">    :param val: The new value to set the minimum base to.</span>
+<span class="sd">    :type val: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ivy</span><span class="o">.</span><span class="n">_MIN_BASE</span> <span class="o">=</span> <span class="n">val</span></div>
 
 <div class="viewcode-block" id="stable_divide"><a class="viewcode-back" href="../../../../functional/ivy/general/stable_divide.html#ivy.functional.ivy.general.stable_divide">[docs]</a><span class="k">def</span> <span class="nf">stable_divide</span><span class="p">(</span><span class="n">numerator</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">min_denominator</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -750,6 +790,99 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># noinspection PyProtectedMember</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">base</span> <span class="o">+</span> <span class="n">default</span><span class="p">(</span><span class="n">min_base</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">_MIN_BASE</span><span class="p">))</span> <span class="o">**</span> <span class="n">exponent</span></div>
+
+
+<div class="viewcode-block" id="get_all_arrays_in_memory"><a class="viewcode-back" href="../../../../functional/ivy/general/get_all_arrays_in_memory.html#ivy.functional.ivy.general.get_all_arrays_in_memory">[docs]</a><span class="k">def</span> <span class="nf">get_all_arrays_in_memory</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gets all arrays which are currently alive.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_arrays</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_objects</span><span class="p">():</span>
+        <span class="c1"># noinspection PyBroadException</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ivy</span><span class="o">.</span><span class="n">is_array</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                <span class="n">all_arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">all_arrays</span></div>
+
+
+<div class="viewcode-block" id="num_arrays_in_memory"><a class="viewcode-back" href="../../../../functional/ivy/general/num_arrays_in_memory.html#ivy.functional.ivy.general.num_arrays_in_memory">[docs]</a><span class="k">def</span> <span class="nf">num_arrays_in_memory</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the number of arrays which are currently alive.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">get_all_arrays_in_memory</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="print_all_arrays_in_memory"><a class="viewcode-back" href="../../../../functional/ivy/general/print_all_arrays_in_memory.html#ivy.functional.ivy.general.print_all_arrays_in_memory">[docs]</a><span class="k">def</span> <span class="nf">print_all_arrays_in_memory</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prints all arrays which are currently alive.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="n">get_all_arrays_in_memory</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_queue_timeout"><a class="viewcode-back" href="../../../../functional/ivy/general/set_queue_timeout.html#ivy.functional.ivy.general.set_queue_timeout">[docs]</a><span class="k">def</span> <span class="nf">set_queue_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the global queue timeout values (in seconds). Default value without this function being called is 10 seconds.</span>
+
+<span class="sd">    :param timeout: The timeout to set in seconds.</span>
+<span class="sd">    :type timeout: float, optional</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">TIMEOUT</span>
+    <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="n">timeout</span></div>
+
+
+<div class="viewcode-block" id="queue_timeout"><a class="viewcode-back" href="../../../../functional/ivy/general/queue_timeout.html#ivy.functional.ivy.general.queue_timeout">[docs]</a><span class="k">def</span> <span class="nf">queue_timeout</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the global queue timeout values (in seconds). Default value without this function being called is 10 seconds.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">TIMEOUT</span>
+    <span class="k">return</span> <span class="n">TIMEOUT</span></div>
+
+
+<div class="viewcode-block" id="tmp_dir"><a class="viewcode-back" href="../../../../functional/ivy/general/tmp_dir.html#ivy.functional.ivy.general.tmp_dir">[docs]</a><span class="k">def</span> <span class="nf">tmp_dir</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the directory for saving temporary files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">TMP_DIR</span></div>
+
+
+<div class="viewcode-block" id="set_tmp_dir"><a class="viewcode-back" href="../../../../functional/ivy/general/set_tmp_dir.html#ivy.functional.ivy.general.set_tmp_dir">[docs]</a><span class="k">def</span> <span class="nf">set_tmp_dir</span><span class="p">(</span><span class="n">tmp_dr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the directory for saving temporary files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">TMP_DIR</span>
+    <span class="n">TMP_DIR</span> <span class="o">=</span> <span class="n">tmp_dr</span></div>
+
+<div class="viewcode-block" id="container_types"><a class="viewcode-back" href="../../../../functional/ivy/general/container_types.html#ivy.functional.ivy.general.container_types">[docs]</a><span class="k">def</span> <span class="nf">container_types</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return all framework-specific types which should be hierarchically parsed in an ivy.Container. Such types must adopt</span>
+<span class="sd">    a key-value structure, and exposes public methods .keys(), .values() and items().</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># noinspection PyBroadException</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">()</span><span class="o">.</span><span class="n">container_types</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="inplace_arrays_supported"><a class="viewcode-back" href="../../../../functional/ivy/general/inplace_arrays_supported.html#ivy.functional.ivy.general.inplace_arrays_supported">[docs]</a><span class="k">def</span> <span class="nf">inplace_arrays_supported</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine whether inplace arrays are supported for the current backend framework.</span>
+
+<span class="sd">    :return: Boolean, whether or not inplace arrays are supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">()</span><span class="o">.</span><span class="n">inplace_arrays_supported</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="inplace_variables_supported"><a class="viewcode-back" href="../../../../functional/ivy/general/inplace_variables_supported.html#ivy.functional.ivy.general.inplace_variables_supported">[docs]</a><span class="k">def</span> <span class="nf">inplace_variables_supported</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine whether inplace variables are supported for the current backend framework.</span>
+
+<span class="sd">    :return: Boolean, whether or not inplace variables are supported.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">()</span><span class="o">.</span><span class="n">inplace_variables_supported</span><span class="p">()</span></div>
 </pre></div>
 
            </div>

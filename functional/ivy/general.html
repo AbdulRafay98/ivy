@@ -125,8 +125,22 @@
 <li class="toctree-l2"><a class="reference internal" href="general/einops_rearrange.html">einops_rearrange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/einops_reduce.html">einops_reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/einops_repeat.html">einops_repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/get_min_denominator.html">get_min_denominator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/set_min_denominator.html">set_min_denominator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/get_min_base.html">get_min_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/set_min_base.html">set_min_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/stable_divide.html">stable_divide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/stable_pow.html">stable_pow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/get_all_arrays_in_memory.html">get_all_arrays_in_memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/num_arrays_in_memory.html">num_arrays_in_memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/print_all_arrays_in_memory.html">print_all_arrays_in_memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/set_queue_timeout.html">set_queue_timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/queue_timeout.html">queue_timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/tmp_dir.html">tmp_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/set_tmp_dir.html">set_tmp_dir</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/container_types.html">container_types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/inplace_arrays_supported.html">inplace_arrays_supported</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/inplace_variables_supported.html">inplace_variables_supported</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gradients.html">Gradients</a></li>
@@ -342,6 +356,13 @@ Default is False.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt id="ivy.functional.ivy.general.container_types">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">container_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#container_types"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.container_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all framework-specific types which should be hierarchically parsed in an ivy.Container. Such types must adopt
+a key-value structure, and exposes public methods .keys(), .values() and items().</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ivy.functional.ivy.general.copy_array">
 <code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">copy_array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#copy_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.copy_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy an array.</p>
@@ -491,6 +512,24 @@ Default is False.</p></li>
 </dd></dl>
 
 <dl class="py function">
+<dt id="ivy.functional.ivy.general.get_all_arrays_in_memory">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">get_all_arrays_in_memory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#get_all_arrays_in_memory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.get_all_arrays_in_memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all arrays which are currently alive.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.get_min_base">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">get_min_base</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#get_min_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.get_min_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the global minimum base used by ivy for numerically stable power raising.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.get_min_denominator">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">get_min_denominator</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#get_min_denominator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.get_min_denominator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the global minimum denominator used by ivy for numerically stable division.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ivy.functional.ivy.general.get_referrers_recursive">
 <code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">get_referrers_recursive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">max_depth</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">seen_set</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">local_set</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#get_referrers_recursive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.get_referrers_recursive" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -508,6 +547,28 @@ Default is False.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Boolean as to whether the array contains nans.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.inplace_arrays_supported">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">inplace_arrays_supported</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#inplace_arrays_supported"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.inplace_arrays_supported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether inplace arrays are supported for the current backend framework.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Boolean, whether or not inplace arrays are supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.inplace_variables_supported">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">inplace_variables_supported</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#inplace_variables_supported"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.inplace_variables_supported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether inplace variables are supported for the current backend framework.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Boolean, whether or not inplace variables are supported.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -545,6 +606,63 @@ Default is False.</p></li>
 <dd class="field-even"><p>Sequence of keyword arguments split as best as possible.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.num_arrays_in_memory">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">num_arrays_in_memory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#num_arrays_in_memory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.num_arrays_in_memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of arrays which are currently alive.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.print_all_arrays_in_memory">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">print_all_arrays_in_memory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#print_all_arrays_in_memory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.print_all_arrays_in_memory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints all arrays which are currently alive.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.queue_timeout">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">queue_timeout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#queue_timeout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.queue_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the global queue timeout values (in seconds). Default value without this function being called is 10 seconds.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.set_min_base">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">set_min_base</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#set_min_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.set_min_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the global minimum base used by ivy for numerically stable power raising.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>val</strong> (<em>float</em>) – The new value to set the minimum base to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.set_min_denominator">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">set_min_denominator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">val</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#set_min_denominator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.set_min_denominator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the global minimum denominator used by ivy for numerically stable division.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>val</strong> (<em>float</em>) – The new value to set the minimum denominator to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.set_queue_timeout">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">set_queue_timeout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeout</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#set_queue_timeout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.set_queue_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the global queue timeout values (in seconds). Default value without this function being called is 10 seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – The timeout to set in seconds.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.set_tmp_dir">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">set_tmp_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tmp_dr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#set_tmp_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.set_tmp_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the directory for saving temporary files.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -595,6 +713,12 @@ Default is False.</p></li>
 <dd class="field-even"><p>The new item following the numerically stable division.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ivy.functional.ivy.general.tmp_dir">
+<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">tmp_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ivy/functional/ivy/general.html#tmp_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.general.tmp_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the directory for saving temporary files.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -713,8 +837,22 @@ Default is False.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="general/einops_rearrange.html">einops_rearrange</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/einops_reduce.html">einops_reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/einops_repeat.html">einops_repeat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/get_min_denominator.html">get_min_denominator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/set_min_denominator.html">set_min_denominator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/get_min_base.html">get_min_base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/set_min_base.html">set_min_base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/stable_divide.html">stable_divide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/stable_pow.html">stable_pow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/get_all_arrays_in_memory.html">get_all_arrays_in_memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/num_arrays_in_memory.html">num_arrays_in_memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/print_all_arrays_in_memory.html">print_all_arrays_in_memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/set_queue_timeout.html">set_queue_timeout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/queue_timeout.html">queue_timeout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/tmp_dir.html">tmp_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/set_tmp_dir.html">set_tmp_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/container_types.html">container_types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/inplace_arrays_supported.html">inplace_arrays_supported</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/inplace_variables_supported.html">inplace_variables_supported</a></li>
 </ul>
 </div>
 </div>
